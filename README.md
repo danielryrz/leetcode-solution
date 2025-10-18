@@ -19,6 +19,11 @@ Each solution includes an explanation of the approach, complexity analysis, and 
 ## LeetCode problems solved and linked
 ### Array Problems
 
-- [Jump Game (#55)](arrays/0055_jump_game.py)  
-  - Greedy solution with explanation and code
+
+- [Jump Game I (#55)](arrays/0055_jump_game.py)  
+  Greedy solution with explanation.
+
+- [Jump Game II (#45)](arrays/0045_jump_game_ii.py)  
+  - Version 1: Minimum jump count (efficient greedy).  
+  - Version 2: Minimum jump count + path reconstruction.
 
