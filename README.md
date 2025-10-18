@@ -23,7 +23,7 @@ Each solution includes an explanation of the approach, complexity analysis, and 
 - [Jump Game I (#55)](arrays/0055_jump_game.py)  
   Greedy solution with explanation.
 
-- [Jump Game II (#45)](arrays/0045_jump_game_ii.py)  
+- [Jump Game II (#45)](arrays/0045_jump_game_II.py)  
   - Version 1: Minimum jump count (efficient greedy).  
   - Version 2: Minimum jump count + path reconstruction.
 
