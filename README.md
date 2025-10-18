@@ -16,3 +16,9 @@ Each solution includes an explanation of the approach, complexity analysis, and 
 - Build a strong problem-solving portfolio
 - Share knowledge with others
 
+## LeetCode problems solved and linked
+### Array Problems
+
+- [Jump Game (#55)](arrays/0055_jump_game.py)  
+  - Greedy solution with explanation and code
+
