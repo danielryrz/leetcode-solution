@@ -48,7 +48,8 @@ def uniquePathsComb(m: int, n: int) -> int:
     I.e.: on how many ways can we make a move down, out of the possibilities of total moves.
     Once we choose down moves, the right moves are already determined by our down moves choices. 
     
-    Time: O(min(m,n)) -> python > 3.8 computes math.comb(m+n-2,m-1) directly (it cancels out the factorial terms )
+    Time: O(min(m,n)) -> python > 3.8 computes math.comb(m+n-2,m-1) directly 
+    (it cancels out the factorial terms and calculates based on min(m,n) please see README.md for this problem)
     Space: O(1)
     """
     return math.comb(m+n-2, m-1)
