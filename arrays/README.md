@@ -11,7 +11,7 @@ Greedy solution with explanation.
 - **Version 1: Greedy (Efficient)**  
   Tracks farthest reachable index (`farthest`) and current jump boundary (`current_end`).  
   Increments jumps when crossing the boundary. It works but it does not track the actual jump indices, thanks to which takes less space O(1), 
-  rather then version 2 which tracks teh actual jump indices and takes space O(n).
+  rather then version 2 which tracks the actual jump indices and takes space O(n).
   - Time: O(n)  
   - Space: O(1)  
 
