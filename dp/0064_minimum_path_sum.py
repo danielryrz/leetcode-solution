@@ -47,7 +47,7 @@ def minPathSumDP(grid):
 
 
 # ====================================================
-# Version 2: In-place DP Optimization
+# Version 2: In-place DP Optimization - preferred 
 # ====================================================
 
 def minPathSumInPlace(grid):
