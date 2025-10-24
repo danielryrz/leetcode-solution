@@ -54,3 +54,45 @@ Return the number of **unique paths** from start to finish.
 
 - `m = 3, n = 7 → 28`  
 - `m = 3, n = 2 → 3`
+
+---
+
+### [Climbing Stairs (#70)](0070_climbing_stairs.py)
+
+**Problem:**  
+You are climbing a staircase with `n` steps. Each time you can climb either **1** or **2** steps.  
+Return the number of distinct ways to reach the top.
+
+The problem follows the recurrence relation:  
+\[
+ways(n) = ways(n-1) + ways(n-2)
+\]
+with base cases `ways(1) = 1`, `ways(2) = 2`.
+
+---
+
+**Solution: Combinatorial (Mathematical)**  
+This implementation uses a **combinatorial counting** approach rather than a dynamic programming table.  
+
+For a given number of 2-step moves `t`, there are `(n - 2t)` single steps, making `(n - t)` total moves.  
+The number of distinct sequences is determined by choosing which positions are 2-steps:
+
+\[
+\text{ways}(n) = \sum_{t=0}^{\lfloor n/2 \rfloor} \binom{n - t}{t}
+\]
+
+---
+
+**Implementation:**
+
+```python
+import math
+
+def climb_stairs(n: int) -> int:
+    if n <= 2:
+        return n
+
+    total = 0
+    for t in range(0, n // 2 + 1):
+        total += math.comb(n - t, t)
+    return total
