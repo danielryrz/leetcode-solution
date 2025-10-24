@@ -58,20 +58,24 @@ def minPathSumInPlace(grid):
     Time: O(m*n)
     Space: O(1)
     """
-    m, n = len(grid), len(grid[0])
+    m len(grid) # len of rows
+    n =  len(grid[0]) # len of cols
 
     for i in range(m):
         for j in range(n):
             if i == 0 and j == 0:
                 continue  # start cell
-            elif i == 0:
+                
+            elif i == 0: # first row
                 grid[i][j] += grid[i][j-1]
-            elif j == 0:
+                
+            elif j == 0: # first col
                 grid[i][j] += grid[i-1][j]
-            else:
+            
+            else: # find a mininum value (either from the top, or from the left)
                 grid[i][j] += min(grid[i-1][j], grid[i][j-1])
 
-    return grid[m-1][n-1]
+    return grid[m-1][n-1] # return final sum
 
 
 # ====================================================
