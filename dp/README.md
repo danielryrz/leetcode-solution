@@ -114,6 +114,9 @@ You have the following three operations permitted on a word:
   - Insert a character
   - Delete a character
   - Replace a character
+
+---
+
 **Solution: DP Table**  
 This solution includes solving the problem using DP table (len(word1)+1) x (len(word2)+1).
 A further optimisation can be mode by keeping only two rows of DP, as at each tieration we compare only the current row, and the row before.
