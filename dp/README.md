@@ -63,19 +63,19 @@ Return the number of **unique paths** from start to finish.
 You are climbing a staircase with `n` steps. Each time you can climb either **1** or **2** steps.  
 Return the number of distinct ways to reach the top.
 
-The problem follows the recurrence relation:  
-\[
-ways(n) = ways(n-1) + ways(n-2)
-\]
-with base cases `ways(1) = 1`, `ways(2) = 2`.
-
----
-
 **Solution: Combinatorial (Mathematical)**  
 This implementation uses a **combinatorial counting** approach rather than a dynamic programming table.  
 
-For a given number of 2-step moves `t`, there are `(n - 2t)` single steps, making `(n - t)` total moves.  
-The number of distinct sequences is determined by choosing which positions are 2-steps:
+A total length of all the steps is `n = 2t + s  => s = n - 2t`. 
+Where `t` is a two steps move, `s` is a one step move.
+That's why the length of a two step move is `2t`.
+Now, the total number of possible steps (set of all the possible moves) is 
+`t + s = t + n -2t = n - t`
+We can rephrase the problem: of selecting two steps move from the total number (set) of possible moves.  
+`t` can take values from `t=0` up to `t = n//2` .
+
+The number of distinct sequences is determined by choosing which positions are 2-steps. 
+Once 2-steps moves are chosen, the 1 step moves are determined. 
 
 **Formula:**  
 
