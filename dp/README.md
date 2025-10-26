@@ -77,6 +77,9 @@ This implementation uses a **combinatorial counting** approach rather than a dyn
 For a given number of 2-step moves `t`, there are `(n - 2t)` single steps, making `(n - t)` total moves.  
 The number of distinct sequences is determined by choosing which positions are 2-steps:
 
+
+![formula](https://latex.codecogs.com/png.image?\dpi{110}\bg_white\large\text{ways}(n) = \sum_{t=0}^{\lfloor n/2 \rfloor} \binom{n - t}{t})
+
 \[
 \text{ways}(n) = \sum_{t=0}^{\lfloor n/2 \rfloor} \binom{n - t}{t}
 \]
