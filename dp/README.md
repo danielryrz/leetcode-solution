@@ -106,6 +106,21 @@ def climb_stairs(n: int) -> int:
 ```
 ---
 
+### [Climbing Stairs (#72)](0072_edit_distance.py)
+
+**Problem:**  
+Given two strings word1 and word2, return the minimum number of operations required to convert word1 to word2.
+You have the following three operations permitted on a word:
+  - Insert a character
+  - Delete a character
+  - Replace a character
+**Solution: DP Table**  
+This solution includes solving the problem using DP table (len(word1)+1) x (len(word2)+1).
+A further optimisation can be mode by keeping only two rows of DP, as at each tieration we compare only the current row, and the row before.
+
+
+---
+
 ### [Word Break (#139)](0139_word_break.py)
 
 **Problem:**  
