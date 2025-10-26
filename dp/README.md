@@ -103,3 +103,35 @@ def climb_stairs(n: int) -> int:
     for t in range(0, n // 2 + 1):
         total += math.comb(n - t, t)
     return total
+```
+---
+
+### [Word Break (#139)](0139_word_break.py)
+
+**Problem:**  
+Given a string `s` and a list of words `wordDict`, determine if `s` can be segmented into a sequence of one or more dictionary words.  
+You may reuse the same word multiple times.
+
+---
+
+**Solution: Dynamic Programming (Tabulation)**  
+
+We define `dp[i]` as **True** if the substring `s[:i]` can be segmented into valid dictionary words.  
+Start with `dp[0] = True` (the empty string is segmentable).  
+Then, for each prefix length `i`, and for each word `w` in the dictionary:
+
+If  
+1. the word fits (`len(w) <= i`),  
+2. the prefix before it is valid (`dp[i - len(w)]`), and  
+3. the ending matches that word (`s[i - len(w):i] == w`),  
+
+then mark `dp[i] = True`.
+
+The final result is `dp[len(s)]`.
+
+- **Time Complexity:** O(n · m · k)  
+  (where `n = len(s)`, `m = len(wordDict)`, `k = average word length`)  
+- **Space Complexity:** O(n)
+
+---
+
