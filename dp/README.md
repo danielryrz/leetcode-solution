@@ -77,6 +77,10 @@ We can rephrase the problem: of selecting two steps move from the total number (
 The number of distinct sequences is determined by choosing which positions are 2-steps. 
 Once 2-steps moves are chosen, the 1 step moves are determined. 
 
+As, this approach uses Python's built-in math.comb() function for
+efficient integer arithmetic implemented in C, it results in a fast
+and numerically exact solution.
+
 **Formula:**  
 
 ![formula](https://latex.codecogs.com/png.image?\dpi{120}\bg_white\large\text{ways}(n)=\sum_{t=0}^{\lfloor%20n/2%20\rfloor}\binom{n-t}{t})
