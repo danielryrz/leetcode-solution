@@ -21,7 +21,6 @@ def jump(nums):
     jumps = 0
     current_end = 0
     farthest = 0
-    lastIndex = len(nums) - 1
 
     # we iterate through the nums until we reach the index that is second to last 
     # to ensure we can make a jump from there, to land on the last index
@@ -36,7 +35,7 @@ def jump(nums):
             current_end = farthest # update current_end to the farthest reachable index
 
             #Once we found the farthest, updated jumps, and current_end, we can break early to save comp power
-            if current_end >= lastIndex:  
+            if current_end >= len(nums) - 1:  
                 break
     return jumps
 
