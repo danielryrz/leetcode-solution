@@ -1,21 +1,20 @@
-def wordBreak(s, wordDict):
-    word_set = set(wordDict)
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        # from list -> make a set for improved performance. Search for words reduced from O(n) to O(1)
+        # remove duplicates, if any present 
+        words = set(wordDict)
 
-    # dp[i] means "can we segment s[:i] ?"  (i from 0 to len(s))
-    dp = [False] * (len(s) + 1)
-  
-    # empty prefix is segmentable
-    dp[0] = True  
+        # Create dp row of length len(s) + 1 as we want to store value for an empty string
+        dp = [False] * (len(s) + 1)
 
-    # check prefix lengths 1..len(s)+1
-    for i in range(1, len(s) + 1):            
-        for w in word_set:
+        # Set True value to an empty string. We can refer to its True value when checking the next word (I.e. dp[i-len(w)] = dp[0] == True -> Yes if word w meets the criteria
+        dp[0] = True
+        
 
-            # word fits into prefix of length i               
-            if len(w) <= i: 
-                                
-                # check the prefix BEFORE this word is good
-                if dp[i - len(w)] and s[i - len(w):i] == w:
-                    dp[i] = True         # s[:i] is segmentable
-                    break                # no need to try other words for this i -> move to the next word
-    return dp[-1] #check the last dp value: either True or False
+        for i in range(1,len(s)+1):
+            for w in words:
+                if len(w) <= i and s[i-len(w):i] == w and dp[i-len(w)] == True:
+                    dp[i] = True
+                    break # move to the next w 
+        
+        return dp[-1] # return the last boolean value 
