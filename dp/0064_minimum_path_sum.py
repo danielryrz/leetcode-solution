@@ -65,10 +65,14 @@ def minPathSumInPlace(grid):
         for j in range(n):
             if i == 0 and j == 0:
                 continue  # start cell
-                
+
+            # in first row, except grid[0][0], the values can be added only from the left, 
+            # so we add to the cell the value from the left 
             elif i == 0: # first row
                 grid[i][j] += grid[i][j-1]
-                
+
+            # in the first col, except grid[0][0], the values can be added only from above  
+            # so we add to the cell the value from above 
             elif j == 0: # first col
                 grid[i][j] += grid[i-1][j]
             
