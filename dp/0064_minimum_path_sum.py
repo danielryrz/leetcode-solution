@@ -58,7 +58,7 @@ def minPathSumInPlace(grid):
     Time: O(m*n)
     Space: O(1)
     """
-    m len(grid) # len of rows
+    m = len(grid) # len of rows
     n =  len(grid[0]) # len of cols
 
     for i in range(m):
