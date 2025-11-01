@@ -18,6 +18,7 @@ Space Complexity: O(1)
 def canJump(nums):
     maxReach = 0
 
+    # we need to iterate until the last index to check if the last index is > maxReach
     for i in range(len(nums)):
         if i > maxReach:
             return False
