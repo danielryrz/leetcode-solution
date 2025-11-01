@@ -10,12 +10,12 @@ class Solution:
         dp = [[0]*(n+1) for _ in range(m+1)]
 
         # col 0 set to i. 
-        # I.e. how many ops do we need to convert word1[:i] into an empty string ""
+        # I.e. how many ops (deletions) do we need to convert word1[:i] into an empty string ""
         for i in range(m+1):
             dp[i][0] = i
 
         # row 0 set to j
-        # I.e. how many ops do we need to convert emptry string "" into word2[:j]
+        # I.e. how many ops (insertions) do we need to convert emptry string "" into word2[:j]
         for j in range(n+1):
             dp[0][j] = j
 
@@ -25,7 +25,8 @@ class Solution:
                     dp[i][j] = dp[i-1][j-1] #just rewrite the no. of ops until now
                 
                 else:
-                    dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) # 1 (ops at this point) + min of the previous available ops
+                    # 1 (ops at this point) + min of the previous available ops (replace, remove, insert)
+                    dp[i][j] = 1 + min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1], )
         
         return dp[m][n]
 
