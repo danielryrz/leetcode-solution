@@ -153,7 +153,7 @@ The final result is `dp[len(s)]`.
 
 ---
 
-### [Coin Change (#322)](0322_coin_change_.py)
+### [Coin Change (#322)](0322_coin_change.py)
 
 **Problem:**  
 You are given an integer array `coins` representing coin denominations and an integer `amount` representing a total amount of money.  
