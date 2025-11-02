@@ -168,6 +168,12 @@ You may assume you have an infinite number of each kind of coin.
 We define `dp[i]` as the **minimum number of coins** required to make up the amount `i`.  
 Start with `dp[0] = 0` (zero coins are needed to make amount 0).  
 Initialize all other values to infinity (or a large number), meaning they are not yet reachable.
+Instead of `float('inf')` We could actually initiialize it to `10**4 + 1` as this is the upper constraint, set on leet code. 
+However, unless the solution does not need to be integers only dp or we are not solving it in C/C++ 
+where: 
+- operations on integers are faster and more accurate avoiding floating error, 
+- integers take less space (int uses 4 bytes, doubles take 8 bytes),    
+in Python, using `float('inf')` makes the solution more clear, and extended time to handle float is negligible.
 
 For each amount `i` from `1` to `amount`,  
 we iterate through all coin denominations and update `dp[i]` using the recurrence:
