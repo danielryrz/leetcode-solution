@@ -153,3 +153,57 @@ The final result is `dp[len(s)]`.
 
 ---
 
+### [Coin Change (#322)](0322_coin_change_.py)
+
+**Problem:**  
+You are given an integer array `coins` representing coin denominations and an integer `amount` representing a total amount of money.  
+Return the **fewest number of coins** needed to make up that amount.  
+If the amount cannot be made up by any combination of the coins, return `-1`.  
+You may assume you have an infinite number of each kind of coin.
+
+---
+
+**Solution: Dynamic Programming (Tabulation)**  
+
+We define `dp[i]` as the **minimum number of coins** required to make up the amount `i`.  
+Start with `dp[0] = 0` (zero coins are needed to make amount 0).  
+Initialize all other values to infinity (or a large number), meaning they are not yet reachable.
+
+For each amount `i` from `1` to `amount`,  
+we iterate through all coin denominations and update `dp[i]` using the recurrence:
+
+If  
+1. the coin can be used (`i - coin >= 0`), then  
+2. `dp[i] = min(dp[i], dp[i - coin] + 1)`
+
+This ensures that for every possible coin, we consider the fewest number of coins needed to build up to amount `i`.
+
+The final result is stored in `dp[amount]`.  
+If it remains infinity, the amount cannot be formed, and we return `-1`.
+
+- **Time Complexity:** O(amount × n)  
+  (where `n = len(coins)`)  
+- **Space Complexity:** O(amount)
+
+---
+
+**Example Walkthrough**
+
+Example:  
+`coins = [1, 2, 5]`, `amount = 11`
+
+| Amount (i) | Calculation                              | dp[i] | Coins Used Example |
+|:-----------:|:----------------------------------------|:------:|:-------------------:|
+| 0 | Base case | 0 | – |
+| 1 | 1 = 1×1 | 1 | [1] |
+| 2 | min(dp[2-1]+1, dp[2-2]+1) = 1 | 1 | [2] |
+| 3 | min(dp[2]+1, dp[1]+1) = 2 | 2 | [1,2] |
+| 5 | min(dp[5-5]+1, dp[4]+1) = 1 | 1 | [5] |
+| 6 | min(dp[6-5]+1, dp[4]+1) = 2 | 2 | [5,1] |
+| 10 | min(dp[10-5]+1) = 2 | 2 | [5,5] |
+| 11 | min(dp[11-5]+1) = 3 | 3 | [5,5,1] |
+
+✅ **Result:** `3` coins (5 + 5 + 1)
+
+---
+
