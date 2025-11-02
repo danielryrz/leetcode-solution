@@ -35,6 +35,8 @@ def jump(nums):
             current_end = farthest # update current_end to the farthest reachable index
 
             #Once we found the farthest, updated jumps, and current_end, we can break early to save comp power
+            # it makes sense to only check if we reached the end, after increasing the jumps count, and setting current_end = farthest
+            # this saves comp time of not checking if we reached the end at every iteration
             if current_end >= len(nums) - 1:  
                 break
     return jumps
