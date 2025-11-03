@@ -13,6 +13,7 @@ class Solution:
 
         for i in range(1,len(s)+1):
             for w in words:
+                # if len(w) <= i (can i is long enough to create a word w) and s[i-len(w):i] == w (is the word formed == w) and is the previous value at [dpi-len(w)]==True
                 if len(w) <= i and s[i-len(w):i] == w and dp[i-len(w)] == True:
                     dp[i] = True
                     break # move to the next w 
