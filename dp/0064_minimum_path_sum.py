@@ -47,7 +47,7 @@ def minPathSumDP(grid):
 
 
 # ====================================================
-# Version 2: In-place DP Optimization - preferred 
+# Version 2: In-place DP Optimization 
 # ====================================================
 
 def minPathSumInPlace(grid):
@@ -94,3 +94,31 @@ if __name__ == "__main__":
 
     print("DP version:", minPathSumDP([row[:] for row in grid1]))       # Output: 7
     print("In-place version:", minPathSumInPlace([row[:] for row in grid1]))  # Output: 7
+
+
+
+# =====================================================
+# Version 2.1: DP Optimisation in place: rearranging the grid to save space - more readable version
+# =====================================================
+
+def minPathSum(grid):
+    
+    m = len(grid) #no. of rows
+
+    n = len(grid[0]) #no. of cols
+
+    # summing path in the first col
+    for i in range(1, m):
+        grid[i][0] += grid[i-1][0]
+
+    # summing path in the first row
+    for j in range(1, n):
+        grid[0][j] += grid[0][j-1]
+
+    # rearranging the rest of the grid, finding min path
+    for i in range(1, m):
+        for j in range(1, n):
+            grid[i][j] += min(grid[i-1][j], grid[i][j-1])
+        
+    return grid[m-1][n-1]
+
