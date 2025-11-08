@@ -11,10 +11,9 @@
 # Output: 5
 # Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6 - 1 = 5.
 
-from typing import List
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
+    def maxProfit(self, prices):
         """
         Calculate the maximum profit from buying and selling a stock once.
 
