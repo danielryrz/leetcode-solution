@@ -14,7 +14,13 @@
 
 from typing import List
 
-def maxSubArray(nums: List[int]) -> int:
+# ============================================================
+# 🧠 Solution 1: Kadane's Algorithm
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+# ============================================================
+
+def maxSubArrayKadane(nums: List[int]) -> int:
     """
     Kadane's Algorithm - O(n) time, O(1) space
     
@@ -37,15 +43,63 @@ def maxSubArray(nums: List[int]) -> int:
     return maxSum
 
 
-# ------------------------------------------------------------
-# ⏱️ Time Complexity: O(n)
-#    We iterate through the array once.
-#
-# 💾 Space Complexity: O(1)
-#    Only constant extra variables are used.
-#
-# ------------------------------------------------------------
-# 🚀 Coming Soon:
-# A more advanced O(n log n) Divide & Conquer approach that splits the array into halves
-# and combines results from left, right, and crossing subarrays for an elegant recursive solution.
-# ------------------------------------------------------------
+# ============================================================
+# 🧩 Solution 2: Divide and Conquer
+# Time Complexity: O(n log n)
+# Space Complexity: O(log n)  (recursion stack)
+# ============================================================
+
+def maxSubArrayDivideAndConquer(nums: List[int]) -> int:
+    """
+    Divide and Conquer approach (O(n log n))
+    
+    Idea:
+    - Divide the array into two halves.
+    - Recursively find:
+        1. The maximum subarray sum in the left half.
+        2. The maximum subarray sum in the right half.
+        3. The maximum subarray sum that crosses the midpoint.
+    - The final answer is the maximum of these three.
+    """
+
+    def cross_sum(nums, left, mid, right):
+        # Find max sum crossing mid from left
+        left_sum = float('-inf')
+        current = 0
+        for i in range(mid, left - 1, -1):
+            current += nums[i]
+            left_sum = max(left_sum, current)
+        
+        # Find max sum crossing mid to right
+        right_sum = float('-inf')
+        current = 0
+        for i in range(mid + 1, right + 1):
+            current += nums[i]
+            right_sum = max(right_sum, current)
+
+        return left_sum + right_sum
+
+    def helper(nums, left, right):
+        # Base case: one element
+        if left == right:
+            return nums[left]
+
+        mid = (left + right) // 2
+
+        left_max = helper(nums, left, mid)
+        right_max = helper(nums, mid + 1, right)
+        cross_max = cross_sum(nums, left, mid, right)
+
+        return max(left_max, right_max, cross_max)
+
+    return helper(nums, 0, len(nums) - 1)
+
+
+# ============================================================
+# Example Usage
+# ============================================================
+
+if __name__ == "__main__":
+    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    print("Kadane’s Algorithm Result:", maxSubArrayKadane(nums))
+    print("Divide and Conquer Result:", maxSubArrayDivideAndConquer(nums))
