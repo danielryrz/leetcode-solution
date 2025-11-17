@@ -32,7 +32,7 @@ class Solution:
         Space Complexity: O(1) - only two variables used
         """
         min_price = float('inf')  # Initialize minimum price
-        max_profit = 0             # Initialize maximum profit
+        max_profit = 0            # Initialize maximum profit, if no profit can be made, 0 will be returned
 
         for price in prices:
             min_price = min(min_price, price)           # Update minimum price if current is lower
