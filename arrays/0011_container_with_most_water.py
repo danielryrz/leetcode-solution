@@ -20,14 +20,12 @@ class Solution:
         max_area = 0
 
         while left < right:
-            width = right - left
-            current_height = min(height[left], height[right])
-            max_area = max(max_area, width * current_height)
+            maxArea = max(maxArea, (right - left) * min(height[left], height[right]))
 
-            # Move the pointer with the shorter line inward
+            # move the pointer with the shorter height (limiting height) inward
             if height[left] < height[right]:
                 left += 1
             else:
                 right -= 1
-
-        return max_area
+                
+        return maxArea
