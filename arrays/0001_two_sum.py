@@ -13,7 +13,7 @@ Example:
     Explanation: nums[0] + nums[1] = 2 + 7 = 9
 
 Time Complexity:
-    O(n) — We iterate through the list once, and each dictionary lookup is O(1) on average.
+    O(n) — We iterate through the list once, and each dictionary lookup takes time of O(1) on average.
 
 Space Complexity:
     O(n) — We use a dictionary to store up to `n` elements.
