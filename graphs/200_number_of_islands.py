@@ -18,6 +18,8 @@ We can solve this using either Breadth-First Search (BFS) or Depth-First Search 
 
 BFS uses an explicit queue to explore neighbors layer by layer.
 DFS recursively explores all connected cells.
+In theory both run at the same speed as they visit every cell once.
+However, especially in python, bfs loop (in this case while loop) + queue is cheaper than dfs recursive calls
 
 Time Complexity:  O(M × N)
 Space Complexity:
@@ -41,22 +43,26 @@ def numIslands(grid):
         grid[r][c] = '0'  # mark as visited (sink land)
 
         while queue:
-            x, y = queue.popleft()
-            for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-                nx, ny = x + dx, y + dy
-                if 0 <= nx < rows and 0 <= ny < cols and grid[nx][ny] == '1':
-                    grid[nx][ny] = '0'
-                    queue.append((nx, ny))
+            r, c = queue.popleft()
+            for dr, dc in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+                nr = r + dr
+                nc = c + dc
+                if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == '1':
+                    grid[nc][nr] = '0' #sink 
+                    queue.append((nc, nr))
 
     # ----------- DFS Implementation -----------
-    # def dfs(r, c):
-    #     if r < 0 or r >= rows or c < 0 or c >= cols or grid[r][c] == '0':
-    #         return
-    #     grid[r][c] = '0'  # mark as visited (sink land)
-    #     dfs(r + 1, c)
-    #     dfs(r - 1, c)
-    #     dfs(r, c + 1)
-    #     dfs(r, c - 1)
+    # def dfs(r,c):
+    #     grid[r][c] = "0" #sink the island
+
+    #     directions = [(1,0), (-1,0), (0,1), (0,-1)]
+
+    #     for dr, dc in directions:
+    #         nr = r + dr
+    #         nc = c + dc
+
+    #         if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == "1":
+    #             dfs(nr,nc)
 
     # ----------- Main Loop -----------
     for r in range(rows):
