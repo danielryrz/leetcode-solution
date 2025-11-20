@@ -38,7 +38,7 @@ def maxSubArrayKadane(nums: List[int]) -> int:
 
     for num in nums[1:]:
         currentSum = max(num, currentSum + num)  # Extend or start new subarray
-        maxSum = max(maxSum, currentSum)          # Update global maximum
+        maxSum = max(maxSum, currentSum)         # Update global maximum
     
     return maxSum
 
