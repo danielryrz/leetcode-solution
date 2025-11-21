@@ -31,7 +31,7 @@ class Solution:
         Time Complexity: O(n) - single pass through the array
         Space Complexity: O(1) - only two variables used
         """
-        min_price = float('inf')  # Initialize minimum price
+        min_price = float('inf')  # Initialize minimum price. Can also be min_price = prices[0]
         max_profit = 0            # Initialize maximum profit, if no profit can be made, 0 will be returned
 
         for price in prices:
