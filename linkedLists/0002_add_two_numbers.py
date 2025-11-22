@@ -26,8 +26,7 @@ from typing import Optional
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         """
-        Adds two numbers represented by linked lists and returns the result
-        as a new linked list.
+        Adds two numbers represented by linked lists and returns the result as a new linked list.
 
         Args:
             l1 (ListNode): Head of the first linked list.
