@@ -19,8 +19,8 @@ Instead of starting from each cell and checking if it can reach both oceans
 (which would be slow), we start DFS/BFS *from the oceans*:
 
 1. Perform DFS/BFS from all Pacific-border cells.
-   - Mark all cells reachable following NON-INCREASING rules (i.e., we allow
-     moving to equal or higher heights → reversed logic).
+   - Mark all cells reachable following the inverse of the NON-INCREASING rule 
+     (i.e., we allow moving water to equal or higher heights → reversed logic).
 
 2. Do the same for Atlantic-border cells.
 
@@ -29,7 +29,8 @@ Instead of starting from each cell and checking if it can reach both oceans
 --------------------------------
 Time Complexity:
     O(m * n)
-Every cell is visited at most twice (once for each ocean).
+Every cell is visited at most twice (once for each ocean). 
+We need to visit cell twice to confirm whether it can be reached by two oceans.
 
 Space Complexity:
     O(m * n)
@@ -46,7 +47,7 @@ class Solution:
         pacific = set()
         atlantic = set()
 
-        # Directions: up, down, left, right
+        # Directions: up, down, right, left
         directions = [(1,0), (-1,0), (0,1), (0,-1)]
 
         def dfs(r, c, visited):
@@ -59,14 +60,24 @@ class Solution:
                     heights[nr][nc] >= heights[r][c]):
                     dfs(nr, nc, visited)
 
-        # Start DFS from Pacific (top and left borders)
+        # Do DFS 
         for c in range(cols):
-            dfs(0, c, pacific)          # top row
-            dfs(rows - 1, c, atlantic)  # bottom row
+            # Start at top row to check which cells we can reach from the Pacific (top row)
+            # This will tell us: from which cells water will flow to Pacific "through" the top row
+            dfs(0, c, pacific) 
+
+            # Start at bottom row to check which cells we can reach from the Atlantic (from bottom row)
+            # This will tell us: from which cells water will flow to Atlantic "through" the bottom row 
+            dfs(rows - 1, c, atlantic) 
 
         for r in range(rows):
-            dfs(r, 0, pacific)          # left column
-            dfs(r, cols - 1, atlantic)  # right column
+            #Iterate through the rows starting at column 0 (left side) from side which we will check if the water can flow (ni reverse) from there. 
+            #This will add to pacific set cells from which the water can flow to Pacific "through" the left side (col 0)
+            dfs(r, 0, pacific)          
+
+            #Iterate through the rows starting at the last col (cols-1), so from the right side, to check if the water can flow (in reverse) from there.
+            #This will add to atlantic set cells from which the water can flow to Atlantic "through" the right side (col cols-1)
+            dfs(r, cols - 1, atlantic) 
 
         # Cells reachable by both oceans
         result = list(pacific & atlantic)
