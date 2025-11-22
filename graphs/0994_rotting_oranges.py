@@ -80,14 +80,18 @@ class Solution:
         # Step 2: BFS traversal
         while queue:
             for _ in range(len(queue)):
+                
                 r, c = queue.popleft()
+                
                 for dr, dc in directions:
-                    nr, nc = r + dr, c + dc
+                    nr = r + dr 
+                    nc = c + dc
                     if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == 1:
                         grid[nr][nc] = 2  # make orange rotten
                         fresh -= 1
                         queue.append((nr, nc))
             minutes += 1  # one minute passes after each BFS layer
+            
         
         # Step 3: Check if any fresh oranges remain
         return minutes if fresh == 0 else -1
