@@ -40,7 +40,7 @@ class Solution:
             # L and R went one step too far, so return the valid substring
             return s[L+1:R]
 
-        longest = ""
+        longest = "" #define longest 
 
         # Check palindromes centered at every index
         for i in range(len(s)):
