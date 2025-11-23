@@ -28,7 +28,7 @@ class Solution:
             - Calculate potential profit at each day.
             - Update maximum profit accordingly.
         
-        Time Complexity: O(n) - single pass through the array
+        Time Complexity: O(n) - single pass through the array. One traversal solution
         Space Complexity: O(1) - only two variables used
         """
         min_price = float('inf')  # Initialize minimum price. Can also be min_price = prices[0]
