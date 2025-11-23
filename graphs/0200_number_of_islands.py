@@ -29,12 +29,13 @@ Space Complexity:
 
 from collections import deque
 
-
 def numIslands(grid):
     if not grid:
         return 0
 
-    rows, cols = len(grid), len(grid[0])
+    rows  = len(grid) 
+    cols = len(grid[0])
+    
     islands = 0
 
     # ----------- BFS Implementation -----------
