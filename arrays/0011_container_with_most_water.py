@@ -20,6 +20,7 @@ class Solution:
         max_area = 0
 
         while left < right:
+            #keep a track of maxArea
             maxArea = max(maxArea, (right - left) * min(height[left], height[right]))
 
             # move the pointer with the shorter height (limiting height) inward
