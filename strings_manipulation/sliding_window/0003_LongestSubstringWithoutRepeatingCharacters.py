@@ -8,7 +8,7 @@
 # Example:
 # Input:  s = "abcabcbb"
 # Output: 3
-# Explanation: The answer is "abc", with length 3.
+# Explanation: The answer is "abc", with length 3
 #
 # Approach:
 # Use the sliding window technique:
