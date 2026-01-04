@@ -48,10 +48,8 @@ class Solution:
 
             # Compute sum of digits + carry
             total = val1 + val2 + carry
-
             # Update carry for the next iteration
             carry = total // 10
-
             # Extract the actual digit to store in the current node
             digit = total % 10
 
