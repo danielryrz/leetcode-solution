@@ -30,7 +30,7 @@ class Solution:
         O(1) — in-place reversal, no extra data structures used.
         """
 
-        prev = None #set prev to None (this will be the new tail)
+        prev = None #set prev to None (this will be the new tail to which the curr will connect, in the first iteration)
         curr = head
 
         while curr:
