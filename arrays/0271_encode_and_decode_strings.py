@@ -15,6 +15,6 @@ class Solution:
                 j += 1 #increase j until we find "#"
             length = int(s[i:j]) # the length is characters between i and j (it can be larger than 9, eg. 872, so more than one figure)
             res.append(s[j+1:j+1+length]) #append the list by writing in the s
-            i = j + 1 + length # increase i 
+            i = j + 1 + length # increase i to start at new word
         
         return res
