@@ -38,22 +38,20 @@ O(n)
 The stack can store up to n indices in the worst case.
 """
 
-from typing import List
-
-
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        n = len(temperatures)
-        answer = [0] * n #create default answer List
-        stack = []  # stack holds indices of unresolved days
+        res = [0] * len(temperatures) #so that 0s are covered by default
+        stack = [] # stack to help
 
-        for i in range(n):
-            # Resolve all previous days that are colder than today
+        for i in range(len(temperatures)):
+            #while stack and temp now is greater than the temp on the index (day) saved at the top of stack - continue until stack is Empty or it is not greater
             while stack and temperatures[i] > temperatures[stack[-1]]:
-                prev_day = stack.pop()
-                answer[prev_day] = i - prev_day
+                #if True then calculate the days difference and save to result, under the corresponding index 
+                res[stack[-1]] = i - stack[-1]
+                #remove the index stack[-1] as its result is already saved in res
+                del stack[-1]
 
-            # Add current day index to the stack
+            #if not then append the index i to the stack
             stack.append(i)
-
-        return answer
+        
+        return res
