@@ -18,7 +18,8 @@ class Solution:
 
         while left <= right:
             # Midpoint of current search interval
-            mid = (left + right) // 2
+            # mid = (left + right) // 2 #this could be used but for big nums size, let's prevent the overflow:
+            mid = l + ((r-l)//2) # as ((r-l)//2) gives us a half in between l and r, the l + ((r-l)//2) lands exactly where the new mid should be 
 
             # Case 1: Found the target
             if nums[mid] == target:
