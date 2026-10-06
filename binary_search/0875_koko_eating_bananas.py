@@ -33,25 +33,22 @@ class Solution:
         - Space complexity: O(1)
         """
 
-        L = 1
+        L = math.ceil(sum(piles) / h) 
         R = max(piles)
         res = R
 
+
         while L <= R:
-            k = (L + R) // 2
-            time = 0
+            k = (L+R)//2
 
-            # Calculate total hours needed at speed k
+            totalTime = 0
             for p in piles:
-                # Ceiling division to account for partial hours
-                time += (p + k - 1) // k
-
-            # If Koko can finish within h hours, try smaller speed
-            if time <= h:
-                res = min(res, k)
+                totalTime += math.ceil(float(p)/k)
+            
+            if totalTime <= h:
+                res = k 
                 R = k - 1
-            # Otherwise, speed is too slow
             else:
                 L = k + 1
-
+        
         return res
