@@ -12,30 +12,30 @@ class Solution:
         Space Complexity: O(1)
         """
 
-        left, right = 0, len(nums) - 1
+        L = 0 
+        R = len(nums) - 1
 
-        while left <= right:
-            mid = (left + right) // 2
+        while L <= R:
+            mid = L + (R-L) // 2
 
-            # Found target
             if nums[mid] == target:
                 return mid
 
-            # Left half is sorted
-            if nums[left] <= nums[mid]:
-                # Target lies in the sorted left half
-                if nums[left] <= target < nums[mid]:
-                    right = mid - 1
+            if nums[L] <= nums[mid]:
+                #left is sorted
+                if nums[L] <= target and target < nums[mid]:
+                    #it's in the left side
+                    R = mid - 1
                 else:
-                    left = mid + 1
+                    #it's in the right side
+                    L = mid + 1
 
-            # Right half is sorted
             else:
-                # Target lies in the sorted right half
-                if nums[mid] < target <= nums[right]:
-                    left = mid + 1
+                # right is sorted
+                if nums[mid] < target and target <= nums[R]:
+                    #it's in the right side, move L
+                    L = mid + 1
                 else:
-                    right = mid - 1
+                    R = mid - 1
 
-        # Target not found
-        return -1
+        return -1 
